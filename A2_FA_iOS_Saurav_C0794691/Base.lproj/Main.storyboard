@@ -44,6 +44,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="VVk-DA-Yka" kind="show" id="mTn-j2-kcT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -56,6 +59,11 @@
                             <connections>
                                 <action selector="addBtn:" destination="GUi-1c-Voy" id="4JI-1w-Tbc"/>
                                 <segue destination="VVk-DA-Yka" kind="show" id="1kO-44-Ab7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="arrowshape.turn.up.right" catalog="system" id="JKI-nc-ejp">
+                            <connections>
+                                <action selector="switchBtn:" destination="GUi-1c-Voy" id="vM6-w8-FtG"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -193,4 +201,10 @@
             <point key="canvasLocation" x="-30.434782608695656" y="4.6875"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrowshape.turn.up.right" catalog="system" width="64" height="52"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1kO-44-Ab7"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -24,12 +24,16 @@ class ProductVC: UIViewController {
     
     
     var editMode: Bool = false
-      
-    var selectedProduct: Product? {
-         didSet {
-             editMode = true
-         }
-     }
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var selectedProduct: Product?{
+        didSet{
+            editMode = true
+        }
+    }
+ 
+   
     
     
     weak var delegate: ProductTVC?
@@ -37,9 +41,23 @@ class ProductVC: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         productName.text = selectedProduct?.name
+        productID.text = selectedProduct?.id
+        productDesc.text = selectedProduct?.desc
+        productPrice.text = selectedProduct?.price
+        productProvider.text = selectedProduct?.provider
+        
+//       let providerNames = self.providers.map {$0.name?.lowercased()}
+//
+//
+//        let newProvider = Provider(context: self.context)
+//        newProvider.name = productProvider.text
+//        self.providers.append(newProvider)
+//        self.saveProviders()
+        
+        
+       
         // Do any additional setup after loading the view.
     }
     
@@ -63,19 +81,19 @@ class ProductVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         
         
-//           if editMode {
-//               delegate!.deleteProduct(product: selectedProduct!)
-//           }
+
+           if editMode {
+              delegate!.deleteProduct(product: selectedProduct!)
+          }
+        guard productName.text != "" else {return}
+        
+       
+        
+        delegate!.updateProduct(with: productName.text!, id:  productID.text!, desc: productDesc.text!, price: productPrice.text!, provider: productProvider.text!)
 //
-//        guard productName.text != "" else {return}
-//        delegate!.updateProduct(with: productName.text!)
-
-        
-        
-        
-    
-}
+        }
     
     
-
+    
+    
 }
