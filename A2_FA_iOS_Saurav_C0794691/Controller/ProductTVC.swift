@@ -21,6 +21,7 @@ class ProductTVC: UITableViewController {
         var products = [Product]()
     }
 
+    //asd
     
    var switchProductsProviders: Bool = false
 
