@@ -42,6 +42,8 @@ class ProductVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+      
+        
         productName.text = selectedProduct?.name
         productID.text = selectedProduct?.id
         productDesc.text = selectedProduct?.desc
@@ -80,8 +82,6 @@ class ProductVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         
-        
-
            if editMode {
               delegate!.deleteProduct(product: selectedProduct!)
           }

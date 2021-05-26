@@ -13,6 +13,7 @@ import CoreData
 class ProductTVC: UITableViewController {
 
   
+    
    var products = [Product]()
   
    
@@ -37,11 +38,14 @@ class ProductTVC: UITableViewController {
         self.navigationController?.isToolbarHidden = false
         
         if switchProductsProviders == false{
-        navigationItem.title = "Products"
-        } else {
-            navigationItem.title = "Providers"
+            self.navigationItem.title = "Products"
+            
         }
         
+        if switchProductsProviders == true
+        {
+                self.navigationItem.title = "Providers"
+        }
         
 //        if someEntityExists() == false {
 //            saveStaticProducts()
@@ -96,7 +100,7 @@ class ProductTVC: UITableViewController {
         
         
         cell.textLabel?.text =  product.name!
-        cell.detailTextLabel?.text = product.provider!
+            cell.detailTextLabel?.text = product.provider! + " - " + product.desc!
 
         let backgroundView = UIView()
         
@@ -105,7 +109,7 @@ class ProductTVC: UITableViewController {
         } else {
             
         cell.textLabel?.text =  product.provider
-        cell.detailTextLabel?.text = product.name
+            cell.detailTextLabel?.text = product.name
       
         }
         
@@ -163,8 +167,26 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      
 
      }
+    
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+       
+        return switchProductsProviders ? false : true
+     }
 
         
+    
+    @IBAction func editBtn(_ sender: UIBarButtonItem) {
+        switchProductsProviders = !switchProductsProviders
+              
+       
+              
+    
+        tableView.setEditing(switchProductsProviders, animated: true)
+        
+    }
+    
+    
     
     func showSearchBar() {
            searchController.searchBar.delegate = self
@@ -174,6 +196,9 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            definesPresentationContext = true
            searchController.searchBar.searchTextField.textColor = .lightGray
        }
+    
+    
+
     
     
     func saveProducts(){
@@ -223,6 +248,17 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
     @IBAction func switchBtn(_ sender: UIBarButtonItem) {
         switchProductsProviders = !switchProductsProviders
+       
+        
+        if switchProductsProviders == false{
+                   self.navigationItem.title = "Products"
+                   
+               }
+               
+               if switchProductsProviders == true
+               {
+                       self.navigationItem.title = "Providers"
+               }
          tableView.reloadData()
     }
     

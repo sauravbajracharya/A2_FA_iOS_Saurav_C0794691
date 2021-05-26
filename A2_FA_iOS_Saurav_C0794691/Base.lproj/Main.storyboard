@@ -55,19 +55,27 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem title="Item" image="arrowshape.turn.up.right" catalog="system" id="JKI-nc-ejp">
+                            <connections>
+                                <action selector="switchBtn:" destination="GUi-1c-Voy" id="vM6-w8-FtG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="145" style="plain" systemItem="fixedSpace" id="nBN-WL-yyJ"/>
+                        <barButtonItem width="145" style="plain" systemItem="fixedSpace" id="KmY-Gr-UxI"/>
                         <barButtonItem systemItem="add" id="7Ji-8q-q5a">
                             <connections>
                                 <action selector="addBtn:" destination="GUi-1c-Voy" id="4JI-1w-Tbc"/>
                                 <segue destination="VVk-DA-Yka" kind="show" id="1kO-44-Ab7"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="Item" image="arrowshape.turn.up.right" catalog="system" id="JKI-nc-ejp">
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Products" id="mHn-bm-nUX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="7tK-AO-EzA">
                             <connections>
-                                <action selector="switchBtn:" destination="GUi-1c-Voy" id="vM6-w8-FtG"/>
+                                <action selector="editBtn:" destination="GUi-1c-Voy" id="Bid-TK-zEz"/>
                             </connections>
                         </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Products" id="mHn-bm-nUX"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yik-rn-jRZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
